@@ -1,0 +1,419 @@
+import os
+from pathlib import Path
+from typing import Dict, List, Any
+import chromadb
+from chromadb.config import Settings
+import ollama
+
+# ============================================================================
+# CONFIGURATION
+# ============================================================================
+
+BASE_DIR = Path(__file__).parent
+DB_DIR = BASE_DIR / "vector_db"
+PDF_TEXT_COLLECTION = "pdf_chunks"
+PDF_IMAGE_COLLECTION = "pdf_images"
+EMBED_MODEL = "nomic-embed-text"
+LLM_MODEL = "llama3.1"
+
+# MODE OPTIONS: "locate", "teach", "notes"
+MODE = "notes"
+
+# Retrieval settings
+TOP_K_TEXT = 10
+TOP_K_IMAGES = 3
+MAX_DISTANCE = 260
+
+
+# ============================================================================
+# DATABASE INITIALIZATION
+# ============================================================================
+
+def init_db():
+    """Initialize ChromaDB connections for PDFs."""
+    if not DB_DIR.exists():
+        print(f"❌ Database not found at: {DB_DIR}")
+        exit(1)
+    
+    client = chromadb.PersistentClient(
+        path=str(DB_DIR),
+        settings=Settings(anonymized_telemetry=False)
+    )
+    
+    # PDF text collection
+    try:
+        text_collection = client.get_or_create_collection(
+            name=PDF_TEXT_COLLECTION,
+            metadata={"hnsw:space": "cosine"},
+            embedding_function=None
+        )
+    except:
+        text_collection = None
+    
+    # PDF image collection
+    try:
+        image_collection = client.get_or_create_collection(
+            name=PDF_IMAGE_COLLECTION,
+            metadata={"hnsw:space": "cosine"},
+            embedding_function=None
+        )
+    except:
+        image_collection = None
+    
+    if not text_collection or text_collection.count() == 0:
+        print("❌ No PDF text found in database")
+        print("💡 Run pdf_to_chunks.py and embed_pdf_chunks.py first")
+        exit(1)
+    
+    text_count = text_collection.count()
+    image_count = image_collection.count() if image_collection else 0
+    
+    print(f"📊 Database: {text_count} PDF text chunks, {image_count} PDF images")
+    
+    has_images = image_count > 0
+    
+    return text_collection, image_collection, has_images
+
+
+# ============================================================================
+# EMBEDDING & RETRIEVAL
+# ============================================================================
+
+def embed_query(query: str) -> List[float]:
+    """Embed query using Ollama."""
+    try:
+        response = ollama.embeddings(
+            model=EMBED_MODEL,
+            prompt=query
+        )
+        return response["embedding"]
+    except Exception as e:
+        print(f"❌ Embedding error: {e}")
+        exit(1)
+
+
+def retrieve_pdf_text(
+    collection,
+    query: str,
+    top_k: int = TOP_K_TEXT,
+    max_distance: float = MAX_DISTANCE
+) -> List[Dict[str, Any]]:
+    """Search PDF text chunks."""
+    query_embedding = embed_query(query)
+    
+    results = collection.query(
+        query_embeddings=[query_embedding],
+        n_results=top_k
+    )
+    
+    if not results["ids"][0]:
+        return []
+    
+    chunks = []
+    
+    for i in range(len(results["ids"][0])):
+        dist = results["distances"][0][i] if "distances" in results else 0
+        
+        if dist > max_distance:
+            continue
+        
+        chunks.append({
+            "type": "text",
+            "document": results["metadatas"][0][i]["document"],
+            "chunk_index": results["metadatas"][0][i]["chunk_index"],
+            "text": results["documents"][0][i],
+            "distance": dist
+        })
+    
+    return chunks
+
+
+def retrieve_pdf_images(
+    collection,
+    query: str,
+    top_k: int = TOP_K_IMAGES
+) -> List[Dict[str, Any]]:
+    """Search PDF images."""
+    if not collection:
+        return []
+    
+    query_embedding = embed_query(query)
+    
+    results = collection.query(
+        query_embeddings=[query_embedding],
+        n_results=top_k
+    )
+    
+    if not results["ids"][0]:
+        return []
+    
+    images = []
+    
+    for i in range(len(results["ids"][0])):
+        images.append({
+            "type": "image",
+            "document": results["metadatas"][0][i]["document"],
+            "page": results["metadatas"][0][i]["page"],
+            "image_index": results["metadatas"][0][i]["image_index"],
+            "description": results["documents"][0][i],
+            "path": results["metadatas"][0][i]["path"],
+            "distance": results["distances"][0][i] if "distances" in results else None
+        })
+    
+    return images
+
+
+# ============================================================================
+# MODE 1: LOCATE - Find content locations
+# ============================================================================
+
+def locate_mode(text_chunks: List[Dict], images: List[Dict]):
+    """Display where topics are found in PDFs."""
+    print("\n" + "="*70)
+    print("📍 TOPIC LOCATIONS IN PDFs")
+    print("="*70 + "\n")
+    
+    # Group by document
+    by_document = {}
+    
+    for chunk in text_chunks:
+        doc = chunk["document"]
+        by_document.setdefault(doc, {"text": [], "images": []})
+        by_document[doc]["text"].append(chunk)
+    
+    for image in images:
+        doc = image["document"]
+        by_document.setdefault(doc, {"text": [], "images": []})
+        by_document[doc]["images"].append(image)
+    
+    # Display by document
+    for doc, content in by_document.items():
+        print(f"📄 Document: {doc}\n")
+        
+        # Text chunks
+        if content["text"]:
+            print("  📝 Text Mentions:")
+            for chunk in content["text"]:
+                print(f"     Chunk #{chunk['chunk_index']}")
+                print(f"     {chunk['text'][:100]}...")
+                print()
+        
+        # Images
+        if content["images"]:
+            print("  🖼️  Relevant Images:")
+            for img in content["images"]:
+                print(f"     Page {img['page']}, Image #{img['image_index']}")
+                print(f"     {img['description'][:100]}...")
+                print(f"     📁 {img['path']}")
+                print()
+        
+        print()
+
+
+# ============================================================================
+# MODE 2: TEACH - Interactive teaching
+# ============================================================================
+
+def teach_mode(query: str, text_chunks: List[Dict], images: List[Dict]):
+    """Generate educational explanation from PDF content."""
+    print("\n" + "="*70)
+    print("🧠 TEACHING MODE")
+    print("="*70 + "\n")
+    
+    # Build context
+    context_parts = []
+    
+    context_parts.append("=== PDF TEXT CONTENT ===\n")
+    for chunk in text_chunks:
+        context_parts.append(
+            f"[{chunk['document']} - Chunk {chunk['chunk_index']}]\n{chunk['text']}\n"
+        )
+    
+    if images:
+        context_parts.append("\n=== PDF VISUAL CONTENT (Diagrams, Charts, Tables) ===\n")
+        for img in images:
+            context_parts.append(
+                f"[{img['document']} - Page {img['page']}]\n{img['description']}\n"
+            )
+    
+    context = "\n".join(context_parts)
+    
+    system_prompt = """You are a precise AI Teaching Assistant with access to PDF educational materials including text AND visual content (diagrams, charts, tables).
+
+Rules:
+- PRIMARY SOURCES: Use the provided PDF text and visual descriptions as your main sources.
+- CITATIONS: Reference the document name and chunk/page when citing information.
+- VISUAL INTEGRATION: When diagrams or charts are relevant, explicitly mention what they show.
+- TRANSPARENCY: If the PDFs don't fully answer the question, state this clearly.
+- STYLE: Clear headings, bullet points, student-friendly explanations.
+- COMPREHENSIVENESS: Combine textual explanations with visual information for complete understanding.
+"""
+    
+    user_prompt = f"""Question: {query}
+
+PDF Sources (Text + Visual):
+{context}
+
+Provide a clear, educational answer based on the PDF content above."""
+    
+    print("💭 Generating explanation...\n")
+    
+    try:
+        response = ollama.chat(
+            model=LLM_MODEL,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ]
+        )
+        
+        print(response["message"]["content"])
+        
+    except Exception as e:
+        print(f"❌ LLM error: {e}")
+
+
+# ============================================================================
+# MODE 3: NOTES - Generate structured notes
+# ============================================================================
+
+def notes_mode(query: str, text_chunks: List[Dict], images: List[Dict]):
+    """Generate comprehensive structured notes from PDF content."""
+    print("\n" + "="*70)
+    print("📝 NOTES GENERATION")
+    print("="*70 + "\n")
+    
+    # Build context
+    context_parts = []
+    
+    context_parts.append("=== PDF TEXT ===\n")
+    for chunk in text_chunks:
+        context_parts.append(
+            f"[{chunk['document']} - Chunk {chunk['chunk_index']}]\n{chunk['text']}\n"
+        )
+    
+    if images:
+        context_parts.append("\n=== PDF VISUALS ===\n")
+        for img in images:
+            context_parts.append(
+                f"[{img['document']} - Page {img['page']}]\n{img['description']}\n"
+            )
+    
+    context = "\n".join(context_parts)
+    
+    system_prompt = """You are an expert note-taker specializing in creating study notes from PDF educational materials.
+
+Create comprehensive, well-structured notes that:
+- Use clear hierarchical organization (main topics → subtopics → details)
+- Extract and define key concepts and terminology
+- Note important visual elements (diagrams, charts, tables, formulas)
+- Include document and page references for all major points
+- Combine textual explanations with visual information
+- Use markdown formatting (headers, bullets, bold for emphasis)
+- Be thorough but concise - capture essence without redundancy
+
+Format:
+# Main Topic
+
+## Key Concepts
+- Concept 1 (from [Document - Page X])
+- Concept 2 (from [Document - Chunk Y])
+
+## Visual Elements
+- Diagram on Page X: Description
+- Chart on Page Y: Key findings
+
+## Detailed Explanation
+...
+
+## Important Formulas/Definitions
+...
+"""
+    
+    user_prompt = f"""Topic: {query}
+
+PDF Content (Text + Visual):
+{context}
+
+Generate comprehensive, well-structured study notes covering all key information."""
+    
+    print("📝 Generating notes...\n")
+    
+    try:
+        response = ollama.chat(
+            model=LLM_MODEL,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt}
+            ]
+        )
+        
+        notes = response["message"]["content"]
+        print(notes)
+        
+        # Save notes
+        notes_dir = BASE_DIR / "generated_notes"
+        notes_dir.mkdir(exist_ok=True)
+        notes_file = notes_dir / f"pdf_{query[:50].replace(' ', '_')}.md"
+        notes_file.write_text(notes, encoding="utf-8")
+        
+        print(f"\n💾 Notes saved to: {notes_file}")
+        
+    except Exception as e:
+        print(f"❌ LLM error: {e}")
+
+
+# ============================================================================
+# MAIN EXECUTION
+# ============================================================================
+
+def main():
+    print("="*70)
+    print(f"🤖 PDF RAG QUERY - Mode: {MODE.upper()}")
+    print("="*70 + "\n")
+    
+    # Initialize
+    text_collection, image_collection, has_images = init_db()
+    
+    if not has_images:
+        print("⚠️  No PDF images found. Visual context disabled.")
+        print("💡 PDF images will be processed if vision model available\n")
+    
+    # Get query
+    query = input("Enter your query: ").strip()
+    
+    if not query:
+        print("❌ Query cannot be empty")
+        return
+    
+    print()
+    print("🔍 Searching PDFs...")
+    
+    # Search PDF content
+    text_chunks = retrieve_pdf_text(text_collection, query)
+    images = retrieve_pdf_images(image_collection, query) if has_images else []
+    
+    if not text_chunks and not images:
+        print("❌ No relevant content found in PDFs.")
+        print("💡 Try:")
+        print("  - Broadening your query")
+        print("  - Using different keywords")
+        print("  - Checking if PDFs contain relevant content")
+        return
+    
+    print(f"✅ Found {len(text_chunks)} text chunks, {len(images)} images\n")
+    
+    # Execute based on mode
+    if MODE == "locate":
+        locate_mode(text_chunks, images)
+    elif MODE == "teach":
+        teach_mode(query, text_chunks, images)
+    elif MODE == "notes":
+        notes_mode(query, text_chunks, images)
+    else:
+        print(f"❌ Unknown mode: {MODE}")
+        print("Valid modes: locate, teach, notes")
+
+
+if __name__ == "__main__":
+    main()

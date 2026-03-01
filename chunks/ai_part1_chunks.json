@@ -1,0 +1,245 @@
+[
+  {
+    "chunk_id": "ai_part1_0_8a9806da12de",
+    "video": "ai_part1",
+    "start": 0.0,
+    "end": 30.32,
+    "duration": 30.32,
+    "text": "Hey there, I'm Gibral, and I am John Greenbot. And welcome to Crash Course Artificial Intelligence. Now, I want to make sure we're starting on the same page. Artificial Intelligence is everywhere. It's helping banks make loan decisions and helping doctors diagnose patients. It's on our cell phones, autocoupleeting text. It's the algorithm recommending videos for you to watch after this one. AI already has a pretty huge impact on all of our lives, so people understandably have some polarized feelings about it.",
+    "word_count": 83
+  },
+  {
+    "chunk_id": "ai_part1_1_6dd1e1078e1e",
+    "video": "ai_part1",
+    "start": 26.56,
+    "end": 59.2,
+    "duration": 32.64,
+    "text": "so people understandably have some polarized feelings about it. Some of us imagine that AI will change the world in positive ways. It could incare accidents because we have self-driving cars. Or, if you give the elderly great personalized care. Others worry that AI will lead to constant surveillance by Big Brother Government, some say the automation will take off our jobs, or the robots might try and kill us all. No, we're not worried about you, John Greenbot. But, when we interact with AI that's currently available like Siri, hey Siri, is AI going to kill us all?",
+    "word_count": 99
+  },
+  {
+    "chunk_id": "ai_part1_2_db901f731bfe",
+    "video": "ai_part1",
+    "start": 52.32,
+    "end": 87.92,
+    "duration": 35.6,
+    "text": "But, when we interact with AI that's currently available like Siri, hey Siri, is AI going to kill us all? I don't understand as AI going to kill us all. It's clear that those are still distant futures. Now, to understand our artificial intelligence might be headed and our role in AI revolution, we have to understand how we got to where we are today. If you know about artificial intelligence mostly for movies or books,",
+    "word_count": 76
+  },
+  {
+    "chunk_id": "ai_part1_3_94cf2ee34ca0",
+    "video": "ai_part1",
+    "start": 75.2,
+    "end": 105.76,
+    "duration": 30.56,
+    "text": "If you know about artificial intelligence mostly for movies or books, AI probably seems like this vague label for any machine that can think like a human. Fiction writers like to imagine a more generalized AI. One that can answer any question we might have and do anything a human can do. But, that's a pretty rigid way to think about AI and it's not super realistic.",
+    "word_count": 67
+  },
+  {
+    "chunk_id": "ai_part1_4_7d4d08e3f540",
+    "video": "ai_part1",
+    "start": 99.68,
+    "end": 130.0,
+    "duration": 30.32,
+    "text": "But, that's a pretty rigid way to think about AI and it's not super realistic. Sorry John Greenbot, you can't do all that yet. A machine is said to have artificial intelligence if it can interpret data, potentially learn from the data and use that knowledge to adapt and achieve specific goals. Now, the idea of learning from the data is kind of a new approach, but we'll get more into that in episode 4. So, let's say we load a new program into John Greenbot.",
+    "word_count": 86
+  },
+  {
+    "chunk_id": "ai_part1_5_96122cec4274",
+    "video": "ai_part1",
+    "start": 124.16,
+    "end": 162.96,
+    "duration": 38.8,
+    "text": "but we'll get more into that in episode 4. So, let's say we load a new program into John Greenbot. This program looks at a bunch of photos of me and some of not me and then learns from the data. Then, we can show him a new photo, like this selfie of me here in the studio filming this Crash Course video and we'll see if he can recognize if the photo is me. If he can correctly classify that new photo, we can say that John Greenbot has some artificial",
+    "word_count": 92
+  },
+  {
+    "chunk_id": "ai_part1_6_3923f14fedaa",
+    "video": "ai_part1",
+    "start": 152.88,
+    "end": 182.88,
+    "duration": 30.0,
+    "text": "If he can correctly classify that new photo, we can say that John Greenbot has some artificial intelligence. Of course, that's a very specific input of photos and a very specific task of classifying a photo that's either me or not me. With just that program, John Greenbot can't recognize or name anyone who isn't me. You are not Jibril. He can't navigate to places.",
+    "word_count": 65
+  },
+  {
+    "chunk_id": "ai_part1_7_4362e43cbd86",
+    "video": "ai_part1",
+    "start": 175.28,
+    "end": 208.08,
+    "duration": 32.8,
+    "text": "recognize or name anyone who isn't me. You are not Jibril. He can't navigate to places. Or hold a meaningful conversation. No, I just don't get it. Or would anyone choose a bag going up a perfectly good donut right here? You are Jibril.",
+    "word_count": 44
+  },
+  {
+    "chunk_id": "ai_part1_8_2f20a7475d42",
+    "video": "ai_part1",
+    "start": 206.24,
+    "end": 240.08,
+    "duration": 33.84,
+    "text": "You are Jibril. Thanks, John Greenbot. He can't do most things that humans do, which is pretty standard for AI these days, but even with this much more limited definition of artificial intelligence, AI still plays a huge role in our everyday lives. There are some more obvious uses for AI, like Alexa or Roomba, which is kind of like the AI from science fiction, I guess. But there are",
+    "word_count": 70
+  },
+  {
+    "chunk_id": "ai_part1_9_fbd37c9fd6aa",
+    "video": "ai_part1",
+    "start": 233.84,
+    "end": 268.64,
+    "duration": 34.8,
+    "text": "like Alexa or Roomba, which is kind of like the AI from science fiction, I guess. But there are also a ton of less obvious examples. When we buy something in a big store or online, we have one type of AI deciding which and how many items to stock. And as we scroll through Instagram, a different type of AI picks ads to show us. AI helps determine how expensive our current is, or whether we get approved for a loan. And AI even affects big life decisions, like when you submit your college or job application, AI might be screening it before a human even",
+    "word_count": 107
+  },
+  {
+    "chunk_id": "ai_part1_10_e6e1ca46580c",
+    "video": "ai_part1",
+    "start": 263.28,
+    "end": 297.04,
+    "duration": 33.76,
+    "text": "like when you submit your college or job application, AI might be screening it before a human even sees it. The way AI and automation are changing commerce and jobs is sort of like the industrial revolution in the 18th century. This change is global. Some people are excited about it, and others are afraid of it. But either way, we all have responsibility to understand AI and figure out what role AI will play in our lives. The AI revolution itself isn't even that old. The term artificial intelligence didn't even exist a century ago. It was coined in 1956 by",
+    "word_count": 102
+  },
+  {
+    "chunk_id": "ai_part1_11_bcbee6d306a3",
+    "video": "ai_part1",
+    "start": 291.2,
+    "end": 322.48,
+    "duration": 31.28,
+    "text": "The term artificial intelligence didn't even exist a century ago. It was coined in 1956 by a computer scientist named John McCarthy. He used it to name the Dartmouth Research Project on Artificial Intelligence. Most people just call it a Dartmouth conference for short. Now, this is way more than a weekend where you listen to a few talks and maybe go to a networking dinner. Back in the day, academics got together to think for a while. The conference lasted eight weeks and got a bunch of computer scientists, cognitive psychologists, and mathematicians to join forces.",
+    "word_count": 97
+  },
+  {
+    "chunk_id": "ai_part1_12_a87abf66817e",
+    "video": "ai_part1",
+    "start": 317.28,
+    "end": 353.28,
+    "duration": 36.0,
+    "text": "and got a bunch of computer scientists, cognitive psychologists, and mathematicians to join forces. Many of the concepts that we'll talk about in Crash Course AI, like artificial neural networks, were dreamed up and developed during this conference and in the few years that followed. But because these excited academics were pretty optimistic about artificial intelligence, they may have oversold it a bit. For example, Marvin Minsky was a talented cognitive scientist who was a part of the Dartmouth conference. But he had some ridiculously wrong predictions about technology and specifically AI. In 1970, he claimed that in three to eight years, we will have a",
+    "word_count": 106
+  },
+  {
+    "chunk_id": "ai_part1_13_1e8f6f262b5c",
+    "video": "ai_part1",
+    "start": 346.88,
+    "end": 381.84,
+    "duration": 34.96,
+    "text": "technology and specifically AI. In 1970, he claimed that in three to eight years, we will have a machine with the general intelligence of an average human being. And sorry, Marvin, but we're not even close to that now. Scientists at the Dartmouth conference seriously underestimated how much data and computing power in AI would need to solve complex world problems. See, artificial intelligence doesn't really know anything when it's created, kind of like a human baby. Babies use their senses to perceive the world and their bodies to interact with it. And they learn from the consequences",
+    "word_count": 98
+  },
+  {
+    "chunk_id": "ai_part1_14_6067943222ea",
+    "video": "ai_part1",
+    "start": 376.48,
+    "end": 407.68,
+    "duration": 31.2,
+    "text": "to perceive the world and their bodies to interact with it. And they learn from the consequences of their actions. My baby niece might put a strawberry in her mouth and decide that it's tasty. And then she might put plate on her mouth and decide that it's gross. Babies experienced millions of these data gathering events as they learned to speak, walk, think, and not eat Plato. Now, most kinds of artificial intelligence don't have things like senses, a body, or a brain that can automatically judge a lot of different things like a human baby does. Modern AI systems are",
+    "word_count": 102
+  },
+  {
+    "chunk_id": "ai_part1_15_40bafeb138e2",
+    "video": "ai_part1",
+    "start": 402.4,
+    "end": 434.64,
+    "duration": 32.24,
+    "text": "that can automatically judge a lot of different things like a human baby does. Modern AI systems are just programs and machines. So we need to give an AI a lot of data. Plus, we have to label the data with whatever information the AI is trying to learn, like whether food tastes good to humans. And then, the AI needs a powerful enough computer to make sense of all the data. All of this just wasn't available in 1956. Back then, an AI could maybe tell the difference between a triangle and a circle, but it definitely could recognize my face in the photo like John",
+    "word_count": 107
+  },
+  {
+    "chunk_id": "ai_part1_16_372cee1e898f",
+    "video": "ai_part1",
+    "start": 429.84,
+    "end": 463.52,
+    "duration": 33.68,
+    "text": "between a triangle and a circle, but it definitely could recognize my face in the photo like John Greenbott did earlier. So, until about 2010 or so, the field was basically frozen in what's called the AI winter. Still, there were a lot of changes in the last half a century that led us to the AI revolution. As a friend once said, history reminds us that revolutions are not so much events as they are processes. The AI revolution didn't begin with a single event idea or invention. We got to where we are today because of lots of small decisions and two big developments in",
+    "word_count": 107
+  },
+  {
+    "chunk_id": "ai_part1_17_0c44d5c836c4",
+    "video": "ai_part1",
+    "start": 458.64,
+    "end": 493.92,
+    "duration": 35.28,
+    "text": "We got to where we are today because of lots of small decisions and two big developments in computing. The first development was a huge increase in computing power and how fast computers could process data. To see just how huge, let's go to the thought bubble. During the Dartmouth conference in 1956, the most advanced computer was the IBM 7090. It filled a whole room, stored data on basically giant cassette tapes and took instructions using paper punch cards. Every second, the IBM 7090 could do about 200,000 operations, but if you tried to do that,",
+    "word_count": 97
+  },
+  {
+    "chunk_id": "ai_part1_18_e9249d03fc08",
+    "video": "ai_part1",
+    "start": 486.48,
+    "end": 518.48,
+    "duration": 32.0,
+    "text": "Every second, the IBM 7090 could do about 200,000 operations, but if you tried to do that, it would take you 55 and a half hours, assuming you did one operation per second and took no breaks. That's right, not even for snacks. At the time, this was enough computing power to help with the US Air Force ballistic missile warning system, but AI needs to do a lot more computations with a lot more data. The speed of a computer is linked to the number of transistors it has to do",
+    "word_count": 92
+  },
+  {
+    "chunk_id": "ai_part1_19_aa97e6b958dc",
+    "video": "ai_part1",
+    "start": 513.52,
+    "end": 545.76,
+    "duration": 32.24,
+    "text": "a lot more data. The speed of a computer is linked to the number of transistors it has to do operations. Every two years or so, since 1956, engineers have doubled the number of transistors that can fit in the same amount of space. So, computers have gotten much faster. When the first iPhone was released in 2007, it could do about 400 million operations per second. But, ten years later, Apple says the iPhone X processor can do about 600 billion operations per second. That's like having the computing power of over 8,000 original iPhones in your pocket.",
+    "word_count": 99
+  },
+  {
+    "chunk_id": "ai_part1_20_b65ce6575f35",
+    "video": "ai_part1",
+    "start": 541.28,
+    "end": 571.68,
+    "duration": 30.4,
+    "text": "That's like having the computing power of over 8,000 original iPhones in your pocket. For the nerds out there, listen, you're right. It's not quite that simple. We're just talking about flops here. And a modern supercomputer, which does computational functions like the IBM 7090 did, can do over 30 quadrillion operations per second. To put it another way, a program that would have taken a modern supercomputer one second to compute would have taken the IBM 7090 4753 years.",
+    "word_count": 80
+  },
+  {
+    "chunk_id": "ai_part1_21_3b1831fdccdb",
+    "video": "ai_part1",
+    "start": 562.64,
+    "end": 597.2,
+    "duration": 34.56,
+    "text": "have taken a modern supercomputer one second to compute would have taken the IBM 7090 4753 years. Thanks, Thought Bubble. So, computers start to have enough computing power to mimic certain brain functions with artificial intelligence in 2005. And that's when the AI winter started to show signs of thawing. But, it doesn't really matter if you have a powerful computer. Unless, you also have a lot of data for it to munch on. The second development that kicked off the AI revolution is something that you're using right now, the internet and social media.",
+    "word_count": 95
+  },
+  {
+    "chunk_id": "ai_part1_22_4f7135992d8b",
+    "video": "ai_part1",
+    "start": 592.24,
+    "end": 624.64,
+    "duration": 32.4,
+    "text": "revolution is something that you're using right now, the internet and social media. In the past 20 years, our world has become much more interconnected. Whether you livestream from your phone or just use a credit card, we're all participating in the modern world. Every time we upload a photo, click a link, tweet a hashtag, tweet without a hashtag, like a video, on YouTube, tag a friend on Facebook, argue on Reddit, post on TikTok, RIP Vine, support a Kickstarter campaign, buy snacks on Amazon, call Uber from a party, and basically anything that",
+    "word_count": 95
+  },
+  {
+    "chunk_id": "ai_part1_23_359e7c9c1f97",
+    "video": "ai_part1",
+    "start": 618.16,
+    "end": 651.68,
+    "duration": 33.52,
+    "text": "Kickstarter campaign, buy snacks on Amazon, call Uber from a party, and basically anything that generates data. Even when we do something that seems like it's offline, like applying for loan to buy a new car or using a passport at the airport, those data sets end up in a bigger system. The AI revolution is happening now, because we have this wealth of data and the computing power to make sense of it. And I get it. The idea that we're generating a bunch of data, but don't always know how, why, or if it's being used by computer programs can be kind of overwhelming. But,",
+    "word_count": 107
+  },
+  {
+    "chunk_id": "ai_part1_24_c59830bb79d9",
+    "video": "ai_part1",
+    "start": 645.92,
+    "end": 677.84,
+    "duration": 31.92,
+    "text": "know how, why, or if it's being used by computer programs can be kind of overwhelming. But, through Crash Course AI, we want to learn how artificial intelligence works, because it's impacting our lives in huge ways, and that impact will only continue to grow. With knowledge, we can make small decisions to help guide the AI revolution. Instead of feeling like we're writing on a rollercoaster, we didn't even sign up for. We're creating the future of artificial intelligence together, every single day, which I think is pretty cool. Next time, we'll start to dive into technical ideas,",
+    "word_count": 99
+  },
+  {
+    "chunk_id": "ai_part1_25_1f96cf128f25",
+    "video": "ai_part1",
+    "start": 671.28,
+    "end": 704.56,
+    "duration": 33.28,
+    "text": "every single day, which I think is pretty cool. Next time, we'll start to dive into technical ideas, like supervised unsupervised and reinforcement learning, and we'll discuss what makes a machine learning algorithm good. See you then. Thanks to PBS for sponsoring Crash Course AI. If you want to help keep Crash Course free for everyone forever, you can join our community on Patreon. And if you want to learn more about how computers got so fast, check out our video on Moore's Law.",
+    "word_count": 84
+  },
+  {
+    "chunk_id": "ai_part1_26_f5b75d8a8a13",
+    "video": "ai_part1",
+    "start": 694.0,
+    "end": 704.56,
+    "duration": 10.56,
+    "text": "you want to learn more about how computers got so fast, check out our video on Moore's Law.",
+    "word_count": 18
+  }
+]
