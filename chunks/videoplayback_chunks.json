@@ -1,0 +1,83 @@
+[
+  {
+    "chunk_id": "videoplayback_0_d123bed40b0c",
+    "video": "videoplayback",
+    "start": 0.0,
+    "end": 45.04,
+    "duration": 45.04,
+    "text": "We all use smartphones, but have you ever wondered how much data it generates in the form of texts, phone calls, emails, photos, videos, searches, and music? Approximately 40 exabytes of data gets generated every month by a single smartphone user. Now, imagine this number multiplied by 5 billion smartphone users. That's a lot for our mind, even process, isn't it? In fact, this amount of data is quite a lot for traditional computing systems to handle. And this massive amount of data is what we term as big data. Let's have a look at the data generated per minute on the internet. 2.1 million snaps are shared on Snapchat. 3.8 million search queries are made on Google.",
+    "word_count": 118
+  },
+  {
+    "chunk_id": "videoplayback_1_9d535e1e9962",
+    "video": "videoplayback",
+    "start": 34.48,
+    "end": 82.08,
+    "duration": 47.6,
+    "text": "Let's have a look at the data generated per minute on the internet. 2.1 million snaps are shared on Snapchat. 3.8 million search queries are made on Google. 1 million people log onto Facebook. 4.5 million videos are watched on YouTube. 188 million emails are sent. That's a lot of data. So, how do you classify any data as big data? This is possible with the concept of 5Vs, volume, velocity, variety, veracity, and value. Let us understand this with an example from the healthcare industry. Hospitals and clinics across the world generate massive volumes of data. 2,314 exabytes of data are collected annually",
+    "word_count": 104
+  },
+  {
+    "chunk_id": "videoplayback_2_b7b71e2a2529",
+    "video": "videoplayback",
+    "start": 69.04,
+    "end": 116.8,
+    "duration": 47.76,
+    "text": "Let us understand this with an example from the healthcare industry. Hospitals and clinics across the world generate massive volumes of data. 2,314 exabytes of data are collected annually in the form of patient records and test results. All this data is generated at a very high speed, which attributes to the velocity of big data. Variety refers to the various data types, such as structured, semi-structured, and unstructured data. Examples include Excel records, log files, and X-ray images. Accuracy and trustworthiness of the generated data is termed as veracity. Analyzing all this data will benefit the medical sector by enabling faster disease detection, better treatment, and reduced cost.",
+    "word_count": 109
+  },
+  {
+    "chunk_id": "videoplayback_3_98cc0c0f6c71",
+    "video": "videoplayback",
+    "start": 103.12,
+    "end": 149.44,
+    "duration": 46.32,
+    "text": "Accuracy and trustworthiness of the generated data is termed as veracity. Analyzing all this data will benefit the medical sector by enabling faster disease detection, better treatment, and reduced cost. This is known as the value of big data. But how do we store and process this big data? To do this job, we have various frameworks, such as Cassandra, Hadoop, and Spark. Let us take Hadoop as an example and see how Hadoop stores and processes big data. Hadoop uses a distributed file system known as Hadoop Distributed File System. To store big data, if you have a huge file, your file will be broken down into smaller chunks and stored in various machines.",
+    "word_count": 115
+  },
+  {
+    "chunk_id": "videoplayback_4_3c3f5ec7bd8a",
+    "video": "videoplayback",
+    "start": 141.6,
+    "end": 188.8,
+    "duration": 47.2,
+    "text": "To store big data, if you have a huge file, your file will be broken down into smaller chunks and stored in various machines. Not only that, when you break the file, you also make copies of it, which goes into different nodes. This way, you store your big data in a distributed way, and make sure that even if one machine fails, your data is safe on another. Map-produced technique is used to process big data. A lengthy task A is broken into smaller tasks. B, C, and D. Now, instead of one machine, three machines take up each task, and complete it in a parallel fashion, and assemble the results at the end. Thanks to this, the processing becomes easy and fast. This is known as parallel processing.",
+    "word_count": 130
+  },
+  {
+    "chunk_id": "videoplayback_5_bb556a8957c6",
+    "video": "videoplayback",
+    "start": 178.48,
+    "end": 224.8,
+    "duration": 46.32,
+    "text": "and complete it in a parallel fashion, and assemble the results at the end. Thanks to this, the processing becomes easy and fast. This is known as parallel processing. Now that we have stored and processed our big data, we can analyze this data for numerous applications, in games like Halo 3 and Call of Duty, designers analyze user data, to understand at which stage most of the users pause, restart, or quit playing. This insight can help them rework on the storyline of the game and improve the user experience, which in turn reduces the customer churn rate. Similarly, big data also helped with disaster management during Hurricane Sandy in 2012. It was used to gain a better understanding",
+    "word_count": 120
+  },
+  {
+    "chunk_id": "videoplayback_6_f1ec153a6ea4",
+    "video": "videoplayback",
+    "start": 213.44,
+    "end": 258.56,
+    "duration": 45.12,
+    "text": "which in turn reduces the customer churn rate. Similarly, big data also helped with disaster management during Hurricane Sandy in 2012. It was used to gain a better understanding of the storm's effect on the east coast of the US, and necessary measures were taken. It could predict the Hurricane's landfall five days in advance, which wasn't possible earlier. These are some of the clear indications of how valuable big data can be, once it is accurately processed and analyzed. So, here's a question for you. Which of the following statements is not correct about Hadoop Distributed File System, HDFS? A, HDFS is the storage layer of Hadoop. B, data gets stored in a distributed manner in HDFS.",
+    "word_count": 118
+  },
+  {
+    "chunk_id": "videoplayback_7_600d48caa8e6",
+    "video": "videoplayback",
+    "start": 246.88,
+    "end": 292.48,
+    "duration": 45.6,
+    "text": "about Hadoop Distributed File System, HDFS? A, HDFS is the storage layer of Hadoop. B, data gets stored in a distributed manner in HDFS. C, HDFS performs parallel processing of data. D, smaller chunks of data are stored on multiple data nodes in HDFS. Give it a thought and leave your answers in the comment section below. Three lucky winners will receive Amazon gift vouchers. Now that you've learned what big data is, what do you think will be the most significant impact of big data in the future? Let us know in the comments below. If you enjoyed this video, it would only take a few seconds to like and share it. Also to subscribe to our channel if you haven't yet,",
+    "word_count": 123
+  },
+  {
+    "chunk_id": "videoplayback_8_a6343f2b6943",
+    "video": "videoplayback",
+    "start": 284.96,
+    "end": 298.72,
+    "duration": 13.76,
+    "text": "If you enjoyed this video, it would only take a few seconds to like and share it. Also to subscribe to our channel if you haven't yet, and hit the bell icon to get instant notifications about our new content. Stay tuned and keep learning!",
+    "word_count": 45
+  }
+]

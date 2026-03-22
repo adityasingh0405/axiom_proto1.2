@@ -1,0 +1,29 @@
+[
+  {
+    "timestamp": "2026-03-03T14:12:08.511831",
+    "input_counts": {
+      "videos": 1,
+      "pdfs": 1
+    },
+    "video_stats": {
+      "transcriptions": 2,
+      "frames_extracted": 32,
+      "text_chunks": 36,
+      "text_embeddings": 36,
+      "frame_embeddings": 32,
+      "errors": []
+    },
+    "pdf_stats": {
+      "pdfs_processed": 1,
+      "text_chunks": 0,
+      "images_extracted": 0,
+      "text_embeddings": 0,
+      "image_embeddings": 0,
+      "errors": [
+        "PDF extraction: 'charmap' codec can't decode byte 0x81 in position 1723: character maps to <undefined>"
+      ]
+    },
+    "total_time_seconds": 566.13,
+    "success": false
+  }
+]
